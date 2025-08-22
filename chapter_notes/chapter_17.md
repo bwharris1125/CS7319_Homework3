@@ -1,5 +1,7 @@
 ## Chapter 17: Microservices Architecture
 
+**NOTE:** _THIS IS CHAPTER 18 IN THE 2ND EDITION OF TEXT BOOK._
+
 There is no secret group of architects who decide what the next big movement will be. Rather, it turns out that many
 architects end up making common decisions.
 
@@ -18,7 +20,7 @@ key to success in this architecture.
 It is hard to define the right granularity for services in microservices. If there are too many services, a lot of
 communication will be required to perform work. The purpose of service boundaries is to capture a domain or workflow.
 
-Guidelines to find the appropriate boundaries:
+### Guidelines to Find the Appropriate Boundaries:
 
 - purpose - a domain, one significant behaviour on behalf of the overall application
 - transactions - often the entities that need to cooperate in a transaction show a good service boundary
@@ -33,7 +35,7 @@ The shared sidecar can be either owned by individual teams or a shared infrastru
 service includes a common sidecar, they can build a _service mesh_ - allowing unified control across the infrastructure
 concerns like logging and monitoring.
 
-2 styles of user interfaces:
+### Two Styles of User Interface:
 
 - monolithic user interface - a single UI that calls through the API layer to satisfy user request
 - micro-frontends - each service emits the UI for that service, which the frontend coordinates with the other emitted UI

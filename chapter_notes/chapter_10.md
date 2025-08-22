@@ -1,6 +1,7 @@
 ## Chapter 10: Layered Architecture Style
 
-The Layered Architecture (n-tiered) - standard for most applications, because of simplicity, familiarity, and low cost.
+### Layered Architecture Summary
+The Layered Architecture _(n-tiered)_ - standard for most applications, because of simplicity, familiarity, and low cost.
 The style also falls into several architectural anti-patterns (architecture by implication, accidental architecture).
 
 Most layered architectures consist of 4 standard layers: presentation, business, persistence, and database.
@@ -15,11 +16,13 @@ Each layer can be either closed or open.
 - closed - a request moves top-down from layer to layer, the request cannot skip any layers
 - open - the request can bypass layers (fast-lane reader pattern)
 
+## Layer Isolation
 The layers of isolation - changes made in one layer of the architecture generally don't impact/affect components in
 other layers. Each layer is independent of the other layers, thereby having little or no knowledge of the inner workings
 of other layers in the architecture. Violation of this concept produces very tightly coupled application with layer
 interdependencies between components This type of architecture becomes very brittle, difficult and expensive to change.
 
+## Overview
 This architecture makes for a good starting point for most applications whe it is not known yet exactly which
 architecture will ultimately be used. Be sure to keep reuse at minimum and keep object hierarchies. A good level of
 modularity will help facilitate the move to another architecture style later on.
