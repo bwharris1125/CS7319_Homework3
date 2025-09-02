@@ -451,10 +451,11 @@ Other distributed considerations:
 
 ## Chapter 10: Layered Architecture Style
 
-The Layered Architecture _(n-tiered)_ - standard for most applications, because of simplicity, familiarity, and low cost.
+### Layered Architecture Summary
+The Layered Architecture _(n-tiered)_ - standard for most applications, because of simplicity, familiarity, and low cost. However, this is at the trade-off of modulatiry, maintainability, depoloyment, and scalability.
 The style also falls into several architectural anti-patterns (architecture by implication, accidental architecture).
 
-Most layered architectures consist of 4 standard layers: presentation, business, persistence, and database.
+Most layered architectures are devided by a well-defined set of responsibilities. A common example of these functions are: presentation, business, persistence, and database. 
 
 The layered architecture is a technically partitioned architecture (as opposed to domain-partitioned architecture).
 Groups of components, rather than being grouped by domain, are grouped by their technical role in the architecture. As a
@@ -462,21 +463,23 @@ result, any particular business domain is spread throughout all of the layers of
 design does not work well with the layered architecture style.
 
 Each layer can be either closed or open.
-
-- closed - a request moves top-down from layer to layer, the request cannot skip any layers
+- closed - a request moves top-down from layer to layer, the request cannot skip any layers (this is the standard / default approach)
 - open - the request can bypass layers (fast-lane reader pattern)
 
+## Layer Isolation
 The layers of isolation - changes made in one layer of the architecture generally don't impact/affect components in
 other layers. Each layer is independent of the other layers, thereby having little or no knowledge of the inner workings
-of other layers in the architecture. Violation of this concept produces very tightly coupled application with layer
+of other layers in the architecture. Complying with this provides a replacability benefit, where a component can be easily replaced or exhanged due to a clearly defined barrier. Violation of this concept produces very tightly coupled application with layer
 interdependencies between components This type of architecture becomes very brittle, difficult and expensive to change.
 
+## Overview
 This architecture makes for a good starting point for most applications whe it is not known yet exactly which
 architecture will ultimately be used. Be sure to keep reuse at minimum and keep object hierarchies. A good level of
 modularity will help facilitate the move to another architecture style later on.
 
 Watch out for the architecture sinkhole anti-pattern - this anti-pattern occurs when requests move from one layer to
-another as simple pass-through processing with no business logic performed within each layer. For example, the
+another as simple pass-through processing with no business logic performed within each layer. Failure to do this results in performance and scalability issues due 
+to increased processing and memory requirements to accomodate this. For example, the
 presentation layer responds to a simple request from the user to retrieve basic costumer data.
 
 ## Chapter 11: Modular Monolith Architecture Style
@@ -566,7 +569,7 @@ be used for small applications as well as large, complex ones. Made up of decoup
 asynchronously receive and process events. It can be used as a standalone style or embedded within other architecture
 style (e.g. event-driven microservices architecture).
 
-2 primary topologies:
+#### 2 Primary Topologies:
 
 - the mediator topology - used when you require control over the workflow of an event process
     - an event mediator - manages and controls the workflow for initiating events that require the coordination of
@@ -585,7 +588,7 @@ style (e.g. event-driven microservices architecture).
     - cons: challenging error handling - no central monitoring/controlling, not possible to restart a business
       transaction (because actions are taken asynchronously)
 
-ERROR HANDLING: the workflow event pattern - leverages delegation, containment, and repair through the use of a workflow
+**ERROR HANDLING**: the workflow event pattern - leverages delegation, containment, and repair through the use of a workflow
 delegate. On error, the event consumer immediately delegates the error to the workflow processor and moves on. The
 workflow processor tries to figure out what is wrong with the message (rules, machine learning, ...), once the message
 is repaired it can be sent back to the event processor. In case a very problematic error a human agent can determine
@@ -677,31 +680,7 @@ systems.
 
 ## Chapter 17: Orchestration-Driven Service-Oriented Architecture
 
-This type appeared in the late 1990s when companies were becoming enterprises and architects were forced to reuse as
-much as possible because of expensive software licenses (no open source alternatives).
-
-Reuse - the dominant philosophy in this architecture.
-
-- Business Services - sit at the top of this architecture and provide the entry point. No code, just input, output and
-  schema information.
-- Enterprise Services - fine-grained, shared implementations - atomic behaviors around particular business domain -
-  CreateCustomer, CalculateQuote, ... - collection of reusable assets - unfortunately, the dynamic nature of reality
-  defies these attempts.
-- Application Services - not all services in the architecture require the same level of granularity, these are one-off,
-  single-implementation services, for example an application a company doesn't want to take the time to make a reusable
-  service.
-- Infrastructure Services - supply the operational concerns - monitoring, logging, auth.
-- Orchestration Engine - the heart of this architecture, defines the relationship between the business and enterprise
-  services, how they map together, and where transaction boundaries lie. It also acts as an integration hub, allowing
-  architects to integrate custom code with package and legacy software systems.
-
-This architecture in practice was mostly a disaster.
-
-When a team builds a system primarily around reuse, they also incur a huge amount of coupling between components. Each
-change had a potential huge ripple effect. That in turn led to the need for coordinated deployments, holistic testing
-and other drags on engineering efficiency.
-
-This architecture manages to find the disadvantages of both monolithic and distributed architectures!
+**_IN WORK [HERE](/chapter_notes/chapter_17.md)._**
 
 ## Chapter 18: Microservices Architecture
 

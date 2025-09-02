@@ -1,6 +1,6 @@
-## Chapter 17: Microservices Architecture
+## Chapter 18: Microservices Architecture
 
-**NOTE:** _THIS IS CHAPTER 18 IN THE 2ND EDITION OF TEXT BOOK._
+**NOTE:** _THIS IS CHAPTER 17 IN THE 1st EDITION OF TEXT BOOK._
 
 There is no secret group of architects who decide what the next big movement will be. Rather, it turns out that many
 architects end up making common decisions.
