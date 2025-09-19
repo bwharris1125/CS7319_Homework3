@@ -1,5 +1,5 @@
 # CS7319_Homework3
-_Update Chapter Notes_ - Homework #2 for CS 7319 Software Architecture
+_Update Chapter Notes_ - Homework #3 for CS 7319 Software Architecture
 [Fundamentals of Software Architecture, 2nd Edition](https://learning.oreilly.com/library/view/fundamentals-of-software/9781098175504/)
 
 ## Instructions
